@@ -1,0 +1,18 @@
+Wnioski
+Każdy algorytm został wykonany 10 razy dla tego samego grafu z taką samą liczbą wykonanych iteracji. Wyniki przedstawiają się następująco:
+
+algorytm wspinaczkowy - na 10 wywołań algorytmu otrzymano 5 odpowiedzi, które mówią, że potrzeba jest co najmniej 4 kolory, by zrealizować założenia problemu kolorowania grafu oraz 5 odpowiedzi, mowiących że potrzeba co najmniej 3 kolorów.
+algorytm symulowanego wyżarzania - na na 10 wywołań algorytmu otrzymano 10 odpowiedzi, które mówią, że potrzeba co najmniej 3 kolorów , by zrealizować założenia problemu kolorowania grafu.
+Z czego wynikają takie różnice?
+Lokalne minima: Algorytm wspinaczkowy (hill climbing) jest algorytmem heurystycznym, który polega na podejmowaniu kroków, które prowadzą do coraz lepszych rozwiązań. Jednak jest on podatny na wpadanie w lokalne minima, tzn. sytuacje, w których każdy pojedynczy ruch prowadzi do gorszego rozwiązania, choć istnieje lepsze rozwiązanie dostępne przez szersze poszukiwanie.
+
+Algorytm ten nie jest zbyt efektywny dla problemów, które mają wiele lokalnych minimów, takich jak problem kolorowania grafu (jest "krótkowzroczny" i nie jest w stanie "przekroczyć" lokalnych minimów w poszukiwaniu globalnego minimum.)
+
+W przypadku problemu kolorowania grafu, algorytm wspinaczkowy może "utknąć" w sytuacji, w której każde pojedyncze przemalowanie wierzchołka na inny kolor prowadzi do konfliktu z sąsiednim wierzchołkiem. W takim przypadku, algorytm nie jest w stanie zobaczyć, że przemalowanie dwóch (lub więcej) wierzchołków naraz mogłoby prowadzić do lepszego rozwiązania.
+
+Dlaczego algorytm symulowanego wyżarzania działa lepiej?
+Zasadniczo, gdy algorytm wspinaczkowy napotka lokalne minimum, utknął. Nie ma mechanizmu, który pozwoliłby mu "przeskoczyć" to minimum i kontynuować poszukiwanie lepszego rozwiązania. Z drugiej strony, symulowane wyżarzanie ma wbudowany mechanizm, który pozwala mu czasami akceptować gorsze rozwiązania, co z kolei pozwala mu uniknąć utknięcia w lokalnych minimach. W miarę obniżania temperatury, prawdopodobieństwo akceptacji gorszych rozwiązań maleje, co oznacza, że algorytm zaczyna się "skupiać" na eksploracji okolic aktualnie najlepszego znalezionego rozwiązania.
+
+Podsumowanie:
+Na podstawie wyników, które otrzymaliśmy, możemy zdecydowanie stwierdzić, że dla tego konkretnego problemu algorytm symulowanego wyżarzania działał lepiej niż algorytm wspinaczkowy.
+
